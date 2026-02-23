@@ -121,16 +121,26 @@ body{
 }
 
 /* Hover effect */
-.quadrant:hover{
-    background:#3B82F6;
-    transform:scale(1.08);
-    z-index:5;
-    box-shadow:0 0 30px rgba(59,130,246,0.6);
-    color:white;
+/* Hover effect: only the ring glows */
+.quadrant:hover {
+    transform: translateY(0); /* no lifting */
+    color: #3B82F6; /* optional: change text color */
 }
 
-.quadrant:hover span{
-    transform:scale(1.1);
+/* Use a pseudo-element to glow the ring segment */
+.quadrant::before {
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    border-radius:inherit;
+    pointer-events:none;
+    transition: box-shadow 0.3s;
+}
+
+.quadrant:hover::before {
+    box-shadow: 0 0 20px 5px rgba(59,130,246,0.6);
 }
 
 /* Hollow center */
@@ -211,4 +221,40 @@ function scrollToRing(){
 </script>
 
 </body>
+<script>
+  // Check if user is logged in
+  const currentUser = localStorage.getItem("currentUser");
+
+  if (!currentUser) {
+      // Not logged in → redirect to login page
+      window.location.href = "auth.html";
+  } else {
+      // Optionally display username somewhere
+      const hero = document.querySelector('.hero');
+      const welcome = document.createElement('p');
+      welcome.textContent = `Welcome, ${currentUser}!`;
+      welcome.style.color = "#34D399";
+      welcome.style.marginTop = "15px";
+      hero.appendChild(welcome);
+  }
+
+  // Add logout button
+  const logoutBtn = document.createElement('button');
+  logoutBtn.textContent = "Logout";
+  logoutBtn.style.marginTop = "20px";
+  logoutBtn.style.padding = "10px 20px";
+  logoutBtn.style.borderRadius = "8px";
+  logoutBtn.style.border = "1px solid #3B82F6";
+  logoutBtn.style.background = "transparent";
+  logoutBtn.style.color = "#3B82F6";
+  logoutBtn.style.cursor = "pointer";
+
+  logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("currentUser");
+      localStorage.removeItem("token"); // optional
+      window.location.href = "auth.html";
+  });
+
+  document.querySelector('.hero').appendChild(logoutBtn);
+</script>
 </html>

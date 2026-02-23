@@ -115,6 +115,39 @@ button.submit-btn:hover{
     color:#F87171;
     min-height:18px;
 }
+@media (max-width: 400px) {
+    /* Make the container narrower and padding smaller */
+    .auth-container {
+        width: 90%;         /* take most of the screen width */
+        padding: 20px;      /* reduce padding */
+    }
+
+    /* Reduce brand font size */
+    .brand {
+        font-size: 20px;
+    }
+
+    /* Reduce input and button padding */
+    input, button.submit-btn {
+        padding: 8px;
+    }
+
+    /* Reduce tab button padding and font */
+    .tabs button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    /* Reduce label font size slightly */
+    label {
+        font-size: 13px;
+    }
+
+    /* Reduce error text font size */
+    .error {
+        font-size: 13px;
+    }
+}
 </style>
 </head>
 
@@ -181,7 +214,7 @@ signupTab.addEventListener("click", () => {
 </script>
 
 <!-- Your Auth Script -->
-<script src="auth.js"></script>
+<script src="js/auth.js"></script>
 
 </body>
 </html>
