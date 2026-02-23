@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinancePilot - Budget Planner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#0F172A;
+    color:#F1F5F9;
+    padding:40px 20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.header h1{
+    font-size:40px;
+    font-weight:700;
+}
+
+.header p{
+    color:#94A3B8;
+    margin-top:10px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.card{
+    background:#1E293B;
+    padding:25px;
+    border-radius:16px;
+    border:1px solid #334155;
+    transition:0.3s;
+}
+
+.card:hover{
+    border-color:#3B82F6;
+    box-shadow:0 0 20px rgba(59,130,246,0.15);
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:6px;
+    font-size:14px;
+    color:#94A3B8;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid #334155;
+    background:#0F172A;
+    color:#F1F5F9;
+    outline:none;
+}
+
+input:focus{
+    border-color:#3B82F6;
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #3B82F6;
+    background:transparent;
+    color:#3B82F6;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#3B82F6;
+    color:#0F172A;
+}
+
+#budgetResult{
+    margin-top:20px;
+    font-size:16px;
+}
+
+#budgetResult p{
+    margin-bottom:10px;
+}
+
+.chart-container{
+    margin-top:30px;
+}
+
+@media(max-width:768px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Budget Planner</h1>
+        <p>Track your expenses and achieve your savings goals.</p>
+    </div>
+
+    <div class="grid">
+
+        <!-- INPUT CARD -->
+        <div class="card">
+            <h3>Monthly Budget Details</h3>
+
+            <label>Monthly Income (₹)</label>
+            <input type="number" id="income" placeholder="Enter monthly income">
+
+            <label>Fixed Monthly Expenses (₹)</label>
+            <input type="number" id="fixedExpense" placeholder="Rent, EMI, etc.">
+
+            <label>Daily Expenses (₹ per day)</label>
+            <input type="number" id="dailyExpense" placeholder="Food, transport, etc.">
+
+            <label>Monthly Savings Goal (₹)</label>
+            <input type="number" id="savingsGoal" placeholder="Target savings">
+
+            <button id="calculateBudget">Calculate Budget</button>
+
+            <div id="budgetResult"></div>
+        </div>
+
+        <!-- CHART CARD -->
+        <div class="card">
+            <h3>Expense Breakdown</h3>
+
+            <div class="chart-container">
+                <canvas id="budgetChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Your JS File -->
+<script src="budget.js"></script>
+
+</body>
+</html>
