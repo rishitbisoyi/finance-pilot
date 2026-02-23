@@ -137,16 +137,16 @@ button:hover{
             <h3>Loan Details</h3>
 
             <label>Loan Amount (₹)</label>
-            <input type="number" id="loanAmount" placeholder="Enter loan amount">
+            <input type="text" inputmode="numeric" id="loanAmount" placeholder="Enter loan amount">
 
             <label>Interest Rate (% per year)</label>
-            <input type="number" id="interestRate" placeholder="Enter interest rate">
+            <input type="text" inputmode="decimal" id="interestRate" placeholder="Enter interest rate">
 
             <label>Tenure (Years)</label>
-            <input type="number" id="tenure" placeholder="Enter tenure">
+            <input type="text" inputmode="numeric" id="tenure" placeholder="Enter tenure">
 
             <label>Extra Monthly Payment (Optional ₹)</label>
-            <input type="number" id="extraPayment" placeholder="Extra payment">
+            <input type="text" inputmode="numeric" id="extraPayment" placeholder="Extra payment">
 
             <button id="calculateEMI">Calculate EMI</button>
 
@@ -167,7 +167,7 @@ button:hover{
 </div>
 
 <!-- Your EMI Script -->
-<script src="emi.js"></script>
+<script src="js/emi.js"></script>
 
 </body>
 </html>

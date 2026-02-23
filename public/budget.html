@@ -1,124 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FinancePilot - Budget Planner</title>
+    <meta charset="UTF-8">
+    <title>FinancePilot - Budget Planner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
-}
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-body{
-    background:#0F172A;
-    color:#F1F5F9;
-    padding:40px 20px;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-.container{
-    max-width:1000px;
-    margin:auto;
-}
+        body {
+            background: #0F172A;
+            color: #F1F5F9;
+            padding: 40px 20px;
+        }
 
-.header{
-    text-align:center;
-    margin-bottom:40px;
-}
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
 
-.header h1{
-    font-size:40px;
-    font-weight:700;
-}
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-.header p{
-    color:#94A3B8;
-    margin-top:10px;
-}
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+        }
 
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-}
+        .header p {
+            color: #94A3B8;
+            margin-top: 10px;
+        }
 
-.card{
-    background:#1E293B;
-    padding:25px;
-    border-radius:16px;
-    border:1px solid #334155;
-    transition:0.3s;
-}
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
 
-.card:hover{
-    border-color:#3B82F6;
-    box-shadow:0 0 20px rgba(59,130,246,0.15);
-}
+        .card {
+            background: #1E293B;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
 
-label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:6px;
-    font-size:14px;
-    color:#94A3B8;
-}
+        .card:hover {
+            border-color: #3B82F6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+        }
 
-input{
-    width:100%;
-    padding:10px;
-    border-radius:10px;
-    border:1px solid #334155;
-    background:#0F172A;
-    color:#F1F5F9;
-    outline:none;
-}
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #94A3B8;
+        }
 
-input:focus{
-    border-color:#3B82F6;
-}
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            background: #0F172A;
+            color: #F1F5F9;
+            outline: none;
+        }
 
-button{
-    margin-top:20px;
-    width:100%;
-    padding:12px;
-    border-radius:12px;
-    border:1px solid #3B82F6;
-    background:transparent;
-    color:#3B82F6;
-    cursor:pointer;
-    transition:0.3s;
-}
+        input:focus {
+            border-color: #3B82F6;
+        }
 
-button:hover{
-    background:#3B82F6;
-    color:#0F172A;
-}
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #3B82F6;
+            background: transparent;
+            color: #3B82F6;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-#budgetResult{
-    margin-top:20px;
-    font-size:16px;
-}
+        button:hover {
+            background: #3B82F6;
+            color: #0F172A;
+        }
 
-#budgetResult p{
-    margin-bottom:10px;
-}
+        #budgetResult {
+            margin-top: 20px;
+            font-size: 16px;
+        }
 
-.chart-container{
-    margin-top:30px;
-}
+        #budgetResult p {
+            margin-bottom: 10px;
+        }
 
-@media(max-width:768px){
-    .grid{
-        grid-template-columns:1fr;
-    }
-}
-</style>
+        .chart-container {
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -166,8 +169,8 @@ button:hover{
 
 </div>
 
-<!-- Your JS File -->
-<script src="budget.js"></script>
+<!-- External JS File -->
+<script src="js/budget.js"></script>
 
 </body>
 </html>
