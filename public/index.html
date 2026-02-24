@@ -1,184 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FinancePilot</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinancePilot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        body {
+            background: #0F172A;
+            color: #F1F5F9;
+            scroll-behavior: smooth;
+        }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
-}
+        /* ================= HERO ================= */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-body{
-    background:#0F172A;
-    color:#F1F5F9;
-    scroll-behavior:smooth;
-}
+        .brand {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: 1px;
+            color: #3B82F6;
+        }
 
-/* ================= HERO ================= */
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 1.1;
+            background: linear-gradient(90deg, #3B82F6, #22D3EE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
+        .hero p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #94A3B8;
+        }
 
-.brand{
-    position:absolute;
-    top:30px;
-    left:50%;
-    transform:translateX(-50%);
-    font-weight:700;
-    font-size:22px;
-    letter-spacing:1px;
-    color:#3B82F6;
-}
+        .hero button {
+            margin-top: 40px;
+            padding: 14px 28px;
+            border-radius: 30px;
+            border: 1px solid #3B82F6;
+            background: transparent;
+            color: #3B82F6;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-.hero h1{
-    font-size:60px;
-    font-weight:700;
-    line-height:1.1;
-    background:linear-gradient(90deg,#3B82F6,#22D3EE);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
+        .hero button:hover {
+            background: #3B82F6;
+            color: #0F172A;
+        }
 
-.hero p{
-    margin-top:20px;
-    font-size:18px;
-    color:#94A3B8;
-}
+        /* ================= RING ================= */
+        .ring-section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.hero button{
-    margin-top:40px;
-    padding:14px 28px;
-    border-radius:30px;
-    border:1px solid #3B82F6;
-    background:transparent;
-    color:#3B82F6;
-    cursor:pointer;
-    transition:0.3s;
-}
+        .ring-container {
+            position: relative;
+            width: 440px;
+            height: 440px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.hero button:hover{
-    background:#3B82F6;
-    color:#0F172A;
-}
+        .ring {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            border-radius: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: visible;
+            z-index: 1;
+        }
 
-/* ================= RING ================= */
+        .quadrant {
+            position: relative;
+            width: 50%;
+            height: 50%;
+            background: #1E293B;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            overflow: visible;
+        }
 
-.ring-section{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+        .q1 { border-top-left-radius: 100%; }
+        .q2 { border-top-right-radius: 100%; }
+        .q3 { border-bottom-left-radius: 100%; }
+        .q4 { border-bottom-right-radius: 100%; }
 
-.ring-container{
-    position:relative;
-    width:420px;
-    height:420px;
-}
+        /* 
+          Each quadrant is 220x220px (half of 440px container).
+          The outer arc corner of each quadrant is at (0,0) for q1 (top-left corner),
+          (220,0) for q2, (0,220) for q3, (220,220) for q4.
+          We position the label near the outer corner (away from center).
+        */
 
-.ring{
-    width:100%;
-    height:100%;
-    position:relative;
-}
+        .quadrant span {
+            position: absolute;
+            font-weight: 700;
+            font-size: 19px;
+            color: #CBD5E1;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            transition: color 0.4s ease, text-shadow 0.4s ease;
+        }
 
-.quadrant{
-    position:absolute;
-    width:50%;
-    height:50%;
-    background:#1E293B;
-    transition:0.3s ease;
-    cursor:pointer;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-weight:600;
-    font-size:18px;
-    color:#94A3B8;
-}
+        /* Labels positioned in the middle of the arc band */
+        .q1 span {
+            top: 46%;
+            left: 46%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
 
-.q1{ top:0; left:0; border-top-left-radius:100%; }
-.q2{ top:0; right:0; border-top-right-radius:100%; }
-.q3{ bottom:0; left:0; border-bottom-left-radius:100%; }
-.q4{ bottom:0; right:0; border-bottom-right-radius:100%; }
+        .q2 span {
+            top: 46%;
+            right: 46%;
+            transform: translate(50%, -50%) rotate(45deg);
+        }
 
-.quadrant span{
-    pointer-events:none;
-    transition:0.3s;
-}
+        .q3 span {
+            bottom: 46%;
+            left: 46%;
+            transform: translate(-50%, 50%) rotate(45deg);
+        }
 
-/* Hover effect */
-/* Hover effect: only the ring glows */
-.quadrant:hover {
-    transform: translateY(0); /* no lifting */
-    color: #3B82F6; /* optional: change text color */
-}
+        .q4 span {
+            bottom: 46%;
+            right: 46%;
+            transform: translate(50%, 50%) rotate(-45deg);
+        }
 
-/* Use a pseudo-element to glow the ring segment */
-.quadrant::before {
-    content:"";
-    position:absolute;
-    top:0; left:0;
-    width:100%;
-    height:100%;
-    border-radius:inherit;
-    pointer-events:none;
-    transition: box-shadow 0.3s;
-}
+        .quadrant:hover {
+            background: #2D3D56;
+            z-index: 10;
+            box-shadow:
+                0 0 60px rgba(59, 130, 246, 0.5),
+                inset 0 0 20px rgba(59, 130, 246, 0.2);
+            transform: scale(1.03);
+        }
 
-.quadrant:hover::before {
-    box-shadow: 0 0 20px 5px rgba(59,130,246,0.6);
-}
+        .quadrant:hover span {
+            color: #FFFFFF;
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.9);
+        }
 
-/* Hollow center */
-.ring::after{
-    content:"";
-    position:absolute;
-    width:58%;
-    height:58%;
-    background:#0F172A;
-    border-radius:50%;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    z-index:3;
-}
+        .center-hole {
+            position: absolute;
+            width: 48%;
+            height: 48%;
+            background: #0F172A;
+            border-radius: 50%;
+            z-index: 15;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8), 0 0 0 4px rgba(30, 41, 59, 0.5);
+        }
 
-.center-text{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    z-index:10;
-    font-weight:600;
-    font-size:20px;
-}
+        .center-text {
+            font-weight: 700;
+            font-size: 22px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
 
-/* Responsive */
-@media(max-width:768px){
-    .hero h1{font-size:40px;}
-    .ring-container{width:280px;height:280px;}
-    .quadrant{font-size:14px;}
-}
-</style>
+        #logoutBtn {
+            position: fixed;
+            top: 24px;
+            right: 30px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid #3B82F6;
+            background: transparent;
+            color: #3B82F6;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 100;
+            transition: 0.3s;
+        }
+
+        #logoutBtn:hover {
+            background: #3B82F6;
+            color: #0F172A;
+        }
+
+        @media(max-width:768px){
+            .hero h1{font-size: 38px;}
+            .ring-container{width: 320px; height: 320px;}
+            .quadrant span{font-size: 11px; letter-spacing: 1px;}
+            .center-text{font-size: 16px;}
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- HERO -->
 <section class="hero">
     <div class="brand">FinancePilot</div>
     <h1>Take Control of Your Financial Future</h1>
@@ -186,9 +236,7 @@ body{
     <button onclick="scrollToRing()">Discover Your Financial Edge</button>
 </section>
 
-<!-- RING -->
 <section class="ring-section" id="ringSection">
-
     <div class="ring-container">
         <div class="ring">
             <div class="quadrant q1" onclick="location.href='emi.html'">
@@ -205,11 +253,10 @@ body{
             </div>
         </div>
 
-        <div class="center-text">
-            Finance Hub
+        <div class="center-hole">
+            <div class="center-text">Finance<br>Hub</div>
         </div>
     </div>
-
 </section>
 
 <script>
@@ -218,43 +265,32 @@ function scrollToRing(){
         behavior:"smooth"
     });
 }
+
+const currentUser = localStorage.getItem("currentUser");
+
+if (!currentUser) {
+    window.location.href = "auth.html";
+} else {
+    const hero = document.querySelector('.hero');
+    const welcome = document.createElement('p');
+    welcome.textContent = `Welcome, ${currentUser}!`;
+    welcome.style.color = "#34D399";
+    welcome.style.marginTop = "15px";
+    hero.appendChild(welcome);
+}
+
+const logoutBtn = document.createElement('button');
+logoutBtn.textContent = "Logout";
+logoutBtn.id = "logoutBtn";
+
+logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("token");
+    window.location.href = "auth.html";
+});
+
+document.body.appendChild(logoutBtn);
 </script>
 
 </body>
-<script>
-  // Check if user is logged in
-  const currentUser = localStorage.getItem("currentUser");
-
-  if (!currentUser) {
-      // Not logged in → redirect to login page
-      window.location.href = "auth.html";
-  } else {
-      // Optionally display username somewhere
-      const hero = document.querySelector('.hero');
-      const welcome = document.createElement('p');
-      welcome.textContent = `Welcome, ${currentUser}!`;
-      welcome.style.color = "#34D399";
-      welcome.style.marginTop = "15px";
-      hero.appendChild(welcome);
-  }
-
-  // Add logout button
-  const logoutBtn = document.createElement('button');
-  logoutBtn.textContent = "Logout";
-  logoutBtn.style.marginTop = "20px";
-  logoutBtn.style.padding = "10px 20px";
-  logoutBtn.style.borderRadius = "8px";
-  logoutBtn.style.border = "1px solid #3B82F6";
-  logoutBtn.style.background = "transparent";
-  logoutBtn.style.color = "#3B82F6";
-  logoutBtn.style.cursor = "pointer";
-
-  logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("currentUser");
-      localStorage.removeItem("token"); // optional
-      window.location.href = "auth.html";
-  });
-
-  document.querySelector('.hero').appendChild(logoutBtn);
-</script>
 </html>
